@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.wakaleo.gameoflife</groupId>
     <artifactId>gameoflife</artifactId>
-    <version>0.8.8-SNAPSHOT</version>
+    <version>0.8.18-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>gameoflife</name>
     <url>https://github.com/wakaleo/game-of-life</url>
@@ -14,10 +14,10 @@
         <!-- A workaround for a bug in PMD -->
         <targetJdk>1.6</targetJdk>
         <github.account>wakaleo</github.account>
-        <thucydides.version>0.4.22</thucydides.version>
+        <thucydides.version>0.4.26</thucydides.version>
     </properties>
     <scm>
-        <connection>scm:git:git@github.com:${github.account}/game-of-life.git</connection>
+       <connection>scm:git:git@github.com:${github.account}/game-of-life.git</connection>
         <developerConnection>scm:git:git@github.com:${github.account}/game-of-life.git</developerConnection>
         <url>scm:git:git@github.com:${github.account}/game-of-life.git</url>
     </scm>
@@ -43,7 +43,6 @@
                 <version>2.9</version>
                 <configuration>
                     <includes>
-                        <include>**/Copy*.java</include>
                         <include>**/When*.java</include>
                         <include>**/*Test.java</include>
                     </includes>

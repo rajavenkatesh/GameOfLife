@@ -4,7 +4,7 @@
     <parent>
         <artifactId>gameoflife</artifactId>
         <groupId>com.wakaleo.gameoflife</groupId>
-        <version>0.8.8-SNAPSHOT</version>
+        <version>0.8.18-SNAPSHOT</version>
     </parent>
     <artifactId>gameoflife-webtests</artifactId>
     <name>gameoflife-webtests</name>
@@ -67,41 +67,30 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.9</version>
                 <configuration>
                     <skip>true</skip>
                 </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.10</version>
                 <executions>
-                    <execution>
-                        <id>unit-tests</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>test</goal>
-                        </goals>
-                        <configuration>
-                            <skip>false</skip>
-                            <parallel>classes</parallel>
-                            <excludes>
-                                <exclude>**/webtests/*.java</exclude>
-                            </excludes>
-                        </configuration>
-                    </execution>
                     <execution>
                         <id>integration-tests</id>
                         <phase>integration-test</phase>
                         <goals>
-                            <goal>test</goal>
+                          <goal>integration-test</goal>
+                          <goal>verify</goal>
                         </goals>
                         <configuration>
-                            <skip>false</skip>
                             <parallel>classes</parallel>
                             <includes>
-                                <include>**/webtests/*.java</include>
+                                <include>**/When*.java</include>
+                                <include>**/*Test.java</include>
                             </includes>
-                            <excludes>
-                                <exclude>**/pages/*.java</exclude>
-                            </excludes>
                             <systemPropertyVariables>
                                 <webdriver.base.url>${webdriver.base.url}</webdriver.base.url>
                             </systemPropertyVariables>
@@ -178,6 +167,30 @@
                     </plugin>
                 </plugins>
             </build>
+        </profile>
+        <profile>
+            <id>development</id>
+            <properties>
+                <webdriver.base.url>http://gameoflife-dev.thucydides.cloudbees.net/</webdriver.base.url>
+            </properties>
+        </profile>
+        <profile>
+            <id>integration</id>
+            <properties>
+                <webdriver.base.url>http://gameoflife-integration.thucydides.cloudbees.net/</webdriver.base.url>
+            </properties>
+        </profile>
+        <profile>
+            <id>staging</id>
+            <properties>
+                <webdriver.base.url>http://gameoflife-staging.thucydides.cloudbees.net/</webdriver.base.url>
+            </properties>
+        </profile>
+        <profile>
+            <id>production</id>
+            <properties>
+                <webdriver.base.url>http://gameoflife.thucydides.cloudbees.net/</webdriver.base.url>
+            </properties>
         </profile>
     </profiles>
 </project>

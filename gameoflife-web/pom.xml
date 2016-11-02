@@ -4,7 +4,7 @@
     <parent>
         <artifactId>gameoflife</artifactId>
         <groupId>com.wakaleo.gameoflife</groupId>
-        <version>0.8.8-SNAPSHOT</version>
+        <version>0.8.18-SNAPSHOT</version>
     </parent>
     <groupId>com.wakaleo.gameoflife</groupId>
     <artifactId>gameoflife-web</artifactId>
@@ -61,6 +61,20 @@
                     </archive>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>net.thucydides.maven.plugins</groupId>
+                <artifactId>maven-thucydides-plugin</artifactId>
+                <version>${thucydides.version}</version>
+                <executions>
+                    <execution>
+                        <id>thucydides-reports</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>aggregate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
     <profiles>
@@ -111,29 +125,29 @@
         <dependency>
             <groupId>com.wakaleo.gameoflife</groupId>
             <artifactId>gameoflife-core</artifactId>
-            <version>0.8.8-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.wakaleo.gameoflife</groupId>
             <artifactId>gameoflife-webservice</artifactId>
-            <version>0.8.8-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>3.0.2.RELEASE</version>
+            <version>3.0.4.RELEASE</version>
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>3.0.2.RELEASE</version>
+            <version>3.0.4.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>3.0.2.RELEASE</version>
+            <version>3.0.4.RELEASE</version>
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
